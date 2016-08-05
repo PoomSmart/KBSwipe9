@@ -1,0 +1,10 @@
+Package: org.thebigboss.kbswipe9
+Name: KBSwipe9
+Depends: mobilesubstrate, firmware (>= 9.0)
+Conflicts: gsc.ipad
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: iOS 9 Quick Text Selection for iPhone
+Maintainer: PoomSmart
+Author: PoomSmart
+Section: Tweaks
