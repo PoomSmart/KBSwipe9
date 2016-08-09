@@ -1,6 +1,6 @@
 DEBUG = 0
 TARGET = iphone:latest
-PACKAGE_VERSION = 1.0
+PACKAGE_VERSION = 1.1
 
 include $(THEOS)/makefiles/common.mk
 

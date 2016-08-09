@@ -1,4 +1,3 @@
-#define CHECK_TARGET
 #import "../PS.h"
 
 @interface _UIKeyboardTextSelectionGestureController : NSObject
@@ -41,9 +40,9 @@ BOOL override = NO;
 // So do it here
 - (void)addOneFingerTextSelectionGesturesToView:(id)view
 {
-	%orig;
 	if (addTwoFinger)
 		[self addTwoFingerTextSelectionGesturesToView:view];
+	%orig;
 }
 
 %end
@@ -59,6 +58,17 @@ BOOL override = NO;
 
 %end
 
+%hook UIKeyboardLayout
+
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2
+{
+	override = enabled;
+	%orig;
+	override = NO;
+}
+
+%end
+
 %hook UITextInteractionAssistant
 
 - (void)addKeyboardTextSelectionGestureRecognizersToView:(id)arg1
@@ -69,10 +79,3 @@ BOOL override = NO;
 }
 
 %end
-
-%ctor
-{
-	if (isTarget(TargetTypeGUINoExtension)) {
-		%init;
-	}
-}
