@@ -67,6 +67,14 @@ BOOL override = NO;
 	override = NO;
 }
 
+- (CGFloat)flickDistance
+{
+	override = enabled;
+	CGFloat value = %orig;
+	override = NO;
+	return value;
+}
+
 %end
 
 %hook UITextInteractionAssistant
