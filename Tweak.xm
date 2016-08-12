@@ -15,7 +15,11 @@ BOOL override = NO;
 
 - (UIUserInterfaceIdiom)userInterfaceIdiom
 {
-	return override ? UIUserInterfaceIdiomPad : %orig;
+	if (override) {
+		override = NO;
+		return UIUserInterfaceIdiomPad;
+	}
+	return %orig;
 }
 
 %end
@@ -51,6 +55,7 @@ BOOL override = NO;
 
 - (void)updateLayout
 {
+	override = NO;
 	addTwoFinger = enabled;
 	%orig;
 	addTwoFinger = NO;
@@ -65,14 +70,6 @@ BOOL override = NO;
 	override = enabled;
 	%orig;
 	override = NO;
-}
-
-- (CGFloat)flickDistance
-{
-	override = enabled;
-	CGFloat value = %orig;
-	override = NO;
-	return value;
 }
 
 %end
